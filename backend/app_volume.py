@@ -40,7 +40,7 @@ def load_data():
 
     return btc_df, eth_df, btc_daily_df, eth_daily_df
 
-# btc_df, eth_df, btc_daily_df, eth_daily_df = load_data()
+btc_df, eth_df, btc_daily_df, eth_daily_df = load_data()
 
 cutoff = pd.Timestamp.today() - pd.DateOffset(years=years)
 btc_df = btc_df[btc_df['month'] >= cutoff]
