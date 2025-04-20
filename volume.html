@@ -111,12 +111,12 @@ To put these findings into perspective, we analysed monthly transaction volumes 
 
     <!-- Read More toggle button -->
     <div class="button-container">
-      <button class="secondary read-more-toggle" onclick="toggleContent()">⬇️ Read More</button>
+      <button class="secondary" onclick="showBlock('block2', this)">⬇️ Read More</button>
     </div>
 
     
-    <!-- Hidden content -->
-    <div id="moreContent">
+    <!-- Block 2 -->
+    <div id="block2" class="hidden">
       <p>Such high transaction volume illustrated above leads us to the realisation about the high amount of transaction fees paid by users. In simple terms, how this works is that in cryptocurrency systems, users typically pay network fees to miners or validators as an incentive to include their transactions in blocks. The amount of fees is an economic indicator of the network usage and congestion. One research paper by D Easley, M O’Hara and S Basu published in Journal of Financial Economics suggests that although without transaction fees, the blockchain ecosystem would not be viable,  it however demonstrates that transaction fees are not welfare-improving for users because even when everyone pays a fee, the expected waiting time doesn't change, only miners receive more compensation, leading to a deadweight loss(11)   . The same research also alludes to the fact that Higher transaction fees and longer waiting times could impede the development of Bitcoin as a transactional medium, even as it continues to develop as a financial asset. The research paper gives a model which can be applied to other similar cryptocurrency systems like Ethereum, that use blockchain management protocols. For other cryptocurrencies also transaction fees rose due to increasing demand and fixed blockchain protocols(11). This raises concerns about the long-term viability of static rules-based protocols and the potential for fragmentation of cryptocurrencies. Please refer to the interactive dashboard to see how transaction fees for Bitcoin and Ethereum have evolved in the last decade.</p>
   
       <img class="exhibit-image" src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit3.png" alt="Exhibit 3">
@@ -124,7 +124,13 @@ To put these findings into perspective, we analysed monthly transaction volumes 
   
       <img class="exhibit-image" src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit4.png" alt="Exhibit 4">
       <div class="exhibit-caption">Exhibit 4</div>
-  
+      <div class="button-container">
+        <button class="secondary" onclick="showBlock('block3', this)">⬇️ Show More</button>
+      </div>
+    </div>
+
+    <!-- Block 3 -->
+    <div id="block3" class="hidden">
       <img class="exhibit-image" src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit5.png" alt="Exhibit 5">
       <div class="exhibit-caption">Exhibit 5</div>
   
@@ -133,6 +139,13 @@ To put these findings into perspective, we analysed monthly transaction volumes 
   
       <p>As seen from the exhibits above, data from 2024 show that users collectively spent nearly $7 billion on transaction fees across major blockchain platforms in that year. This is also highlighted in the article published in coingecko.(2)</p>
   
+      <div class="button-container">
+        <button class="secondary" onclick="showBlock('block4', this)">⬇️ Show More</button>
+      </div>
+    </div>
+
+     <!-- Block 4 -->
+    <div id="block4" class="hidden">
       <img class="exhibit-image" src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit7.png" alt="Exhibit 7">
       <div class="exhibit-caption">Exhibit 7</div>
   
@@ -155,18 +168,11 @@ To put these findings into perspective, we analysed monthly transaction volumes 
       </div>
     </div>
   </main>
-    <script>
-    function toggleContent() {
-      const content = document.getElementById("moreContent");
-      const btn = document.querySelector(".read-more-toggle");
-
-      if (content.classList.contains("show")) {
-        content.classList.remove("show");
-        btn.textContent = "⬇️ Read More";
-      } else {
-        content.classList.add("show");
-        btn.textContent = "⬆️ Show Less";
-      }
+  <script>
+    function showBlock(id, btn) {
+      const block = document.getElementById(id);
+      block.classList.remove('hidden');
+      btn.style.display = 'none';
     }
   </script>
 </body>
