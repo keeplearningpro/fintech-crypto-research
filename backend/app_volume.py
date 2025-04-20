@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 st.set_page_config(page_title="Crypto Volume & Fees", layout="wide")
 st.title("📈 Transaction Volume & Fees Over Time")
