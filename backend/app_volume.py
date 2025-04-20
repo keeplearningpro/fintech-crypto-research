@@ -12,7 +12,7 @@ This dashboard allows you to explore:
 - Fee comparisons over time
 """)
 
-years = st.selectbox("Select how many years of data to visualize", [10, 5, 2])
+years = st.selectbox("Select how many years of data to visualize", [10, 9, 8, 7, 6, 5, 4, 3, 2, 1])
 
 @st.cache_data
 def load_data():
