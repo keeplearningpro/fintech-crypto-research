@@ -6,7 +6,7 @@ st.set_page_config(page_title="Crypto Volume & Fees", layout="wide")
 st.title("📈 Transaction Volume & Fees Over Time")
 
 # User input
-years = st.selectbox("Select how many years of data to visualize", [10, 9, 8, 7, 6, 5, 4, 3, 2, 1])
+years = st.slider("Select how many years of data to visualize", min_value=1, max_value=10, value=5)
 
 @st.cache_data
 def load_data():
