@@ -50,7 +50,11 @@
       margin: 10px;
       transition: background-color 0.3s ease, box-shadow 0.2s ease;
     }
-
+    
+    .button-container a,
+    .button-container button {
+      display: inline-block;
+    }
     .primary {
       background-color: #1a73e8;
       color: white;
@@ -171,6 +175,7 @@ To put these findings into perspective, we analysed monthly transaction volumes 
         <a href="index.html">
           <button class="secondary">⬅️ Back to Home</button>
         </a>
+        <button class="secondary" onclick="scrollToTop()">🔝 Back to Top</button>
       </div>
     </div>
   </main>
@@ -180,6 +185,9 @@ To put these findings into perspective, we analysed monthly transaction volumes 
       block.classList.remove('hidden');
       btn.style.display = 'none';
     }
+    function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
   </script>
 </body>
 </html>
