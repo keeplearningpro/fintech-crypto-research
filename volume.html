@@ -11,23 +11,26 @@
       color: #333;
       line-height: 1.7;
     }
+
     header, main {
       max-width: 900px;
       margin: auto;
     }
-    h1, h2 {
+
+    h1 {
       text-align: center;
       color: #1a73e8;
     }
-    img {
-      display: block;
-      margin: 30px auto;
-      max-width: 100%;
+
+    p {
+      margin-bottom: 20px;
     }
+
     .button-container {
       text-align: center;
-      margin-top: 30px;
+      margin-bottom: 30px;
     }
+
     .button-container a button {
       padding: 12px 24px;
       font-size: 16px;
@@ -36,71 +39,84 @@
       cursor: pointer;
       margin: 10px;
     }
+
     .primary {
       background-color: #1a73e8;
       color: white;
     }
+
     .secondary {
       background-color: #ccc;
       color: #333;
     }
+
+    .exhibit-image {
+      display: block;
+      margin: 30px auto 5px auto;
+      max-width: 100%;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .exhibit-caption {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      margin-bottom: 30px;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Interactive Dashboard Button at Top -->
+  <div class="button-container">
+    <a href="https://keeplearningpro-transaction-volume-fees.streamlit.app" target="_blank">
+      <button class="primary">🚀 Launch Interactive Dashboard</button>
+    </a>
+  </div>
+
   <header>
     <h1>📊 Cryptocurrency Transaction Volume & Fees</h1>
   </header>
+
   <main>
-    <p>Cryptocurrency networks now handle a substantial volume of transactions worldwide, reflecting their growing adoption. On-chain transaction volume—meaning the total value of crypto transferred on blockchain ledgers—is on the order of trillions of US dollars per year. For example, Chainalysis data indicate that from July 2022 to June 2023, North America alone accounted for about $1.2 trillion in cryptocurrency received on-chain, representing roughly 24.4% of global transaction activity. This implies a global on-chain transaction value of around $4.9–5.0 trillion for that 12-month period.</p>
+    <p>Cryptocurrency networks now handle a substantial volume of transactions worldwide, reflecting their growing adoption...</p>
 
-    <p>Bitcoin, the oldest and largest cryptocurrency network, regularly processes billions of dollars in transfers daily. Late in 2023, Bitcoin’s on-chain transfer volumes surged to over $5 billion per day, up from roughly $2.4 billion/day earlier in the year. Similarly, the Ethereum network also handles a significant volume of transactions—on the order of 1 million transactions per day—facilitating not only Ether (ETH) transfers but also tokens and smart contract operations.</p>
+    <img class="exhibit-image" src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit1.png" alt="Exhibit 1">
+    <div class="exhibit-caption">Exhibit 1</div>
 
-    <p>These figures highlight the growing use of crypto networks for value transfer, increasingly rivaling traditional payment systems in throughput, albeit with differences in usage and capacity.</p>
+    <img class="exhibit-image" src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit2.png" alt="Exhibit 2">
+    <div class="exhibit-caption">Exhibit 2</div>
 
-    <h2>Exhibit 1</h2>
-    <img src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit1.png" alt="Exhibit 1">
+    <p>High transaction volumes lead to substantial transaction fees...</p>
 
-    <h2>Exhibit 2</h2>
-    <img src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit2.png" alt="Exhibit 2">
+    <img class="exhibit-image" src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit3.png" alt="Exhibit 3">
+    <div class="exhibit-caption">Exhibit 3</div>
 
-    <p>High transaction volumes lead to substantial transaction fees. In cryptocurrency systems, users pay network fees to miners or validators as incentives to include transactions in blocks. Fees serve as economic signals of network usage and congestion.</p>
+    <img class="exhibit-image" src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit4.png" alt="Exhibit 4">
+    <div class="exhibit-caption">Exhibit 4</div>
 
-    <p>A research paper by D. Easley, M. O’Hara, and S. Basu (Journal of Financial Economics) argues that while fees are essential for sustainability, they may not be welfare-enhancing since everyone pays fees but transaction waiting times remain unchanged—creating deadweight loss. The paper also notes that high fees and long wait times can hinder cryptocurrencies from functioning as transactional media.</p>
+    <img class="exhibit-image" src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit5.png" alt="Exhibit 5">
+    <div class="exhibit-caption">Exhibit 5</div>
 
-    <h2>Exhibit 3</h2>
-    <img src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit3.png" alt="Exhibit 3">
+    <img class="exhibit-image" src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit6.png" alt="Exhibit 6">
+    <div class="exhibit-caption">Exhibit 6</div>
 
-    <h2>Exhibit 4</h2>
-    <img src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit4.png" alt="Exhibit 4">
+    <p>Data from 2024 show that users spent nearly $7 billion on transaction fees...</p>
 
-    <h2>Exhibit 5</h2>
-    <img src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit5.png" alt="Exhibit 5">
+    <img class="exhibit-image" src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit7.png" alt="Exhibit 7">
+    <div class="exhibit-caption">Exhibit 7</div>
 
-    <h2>Exhibit 6</h2>
-    <img src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit6.png" alt="Exhibit 6">
+    <p>Ethereum earned the most in fees—about $2.48 billion in 2024...</p>
 
-    <p>Data from 2024 show that users spent nearly $7 billion on transaction fees across major blockchains, as also reported by CoinGecko.</p>
+    <img class="exhibit-image" src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit8.png" alt="Exhibit 8">
+    <div class="exhibit-caption">Exhibit 8</div>
 
-    <h2>Exhibit 7</h2>
-    <img src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit7.png" alt="Exhibit 7">
+    <p>Transaction fees vary significantly during network congestion...</p>
 
-    <p>Ethereum earned the most in fees—about $2.48 billion in 2024—due to its use in decentralized finance (DeFi). Tron followed closely with ~$2.15 billion. Bitcoin collected ~$923 million, reflecting lower base-layer fee levels.</p>
-
-    <p>In 2024, daily fees averaged $6.8 million for Ethereum and $2.5 million for Bitcoin, as shown below:</p>
-
-    <h2>Exhibit 8</h2>
-    <img src="https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/exhibit8.png" alt="Exhibit 8">
-
-    <p>Transaction fees vary significantly during network congestion. For instance, Bitcoin fees surged to $15 per transaction in November 2023, while Ethereum fees often spiked above $10 during heavy demand. The research by Easley et al. shows that longer waiting times correlate with fewer zero-fee transactions—demonstrating a market-based fee dynamic.</p>
-
-    <p>Such volatility in fees reflects the limited throughput of blockchains and auction-style fee markets. High fees can price out smaller users and have led to scaling efforts such as Ethereum Layer-2 solutions and Bitcoin Lightning Network.</p>
-
-    <p><strong>In conclusion:</strong> The crypto ecosystem handles trillions in annual value and billions in fees, demonstrating wide usage but also surfacing sustainability concerns. While still smaller than global card payments, crypto volumes are catching up—driven by tech upgrades and institutional adoption.</p>
+    <p><strong>In conclusion:</strong> The crypto ecosystem handles trillions in annual value and billions in fees...</p>
 
     <div class="button-container">
-      <a href="https://keeplearningpro-transaction-volume-fees.streamlit.app" target="_blank">
-        <button class="primary">🚀 Launch Interactive Dashboard</button>
-      </a>
       <a href="index.html">
         <button class="secondary">⬅️ Back to Home</button>
       </a>
