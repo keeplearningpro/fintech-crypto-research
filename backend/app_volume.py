@@ -16,10 +16,10 @@ years = st.selectbox("Select how many years of data to visualize", [10, 5, 2])
 
 @st.cache_data
 def load_data():
-    btc_df = pd.read_csv("https://raw.githubusercontent.com/your-username/your-repo/main/data/bitcoin.csv")
-    eth_df = pd.read_csv("https://raw.githubusercontent.com/your-username/your-repo/main/data/ethereum.csv")
-    btc_daily_df = pd.read_csv("https://raw.githubusercontent.com/your-username/your-repo/main/data/bitcoin-daily.csv")
-    eth_daily_df = pd.read_csv("https://raw.githubusercontent.com/your-username/your-repo/main/data/ethereum-daily.csv")
+    btc_df = pd.read_csv("https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/bitcoin.csv")
+    eth_df = pd.read_csv("https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/ethereum.csv")
+    btc_daily_df = pd.read_csv("https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/bitcoin-daily.csv")
+    eth_daily_df = pd.read_csv("https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/ethereum-daily.csv")
 
     btc_df['month'] = pd.to_datetime(btc_df['month'])
     eth_df['month'] = pd.to_datetime(eth_df['month'])
