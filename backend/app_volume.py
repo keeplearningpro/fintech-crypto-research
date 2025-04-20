@@ -16,10 +16,16 @@ years = st.selectbox("Select how many years of data to visualize", [10, 9, 8, 7,
 
 @st.cache_data
 def load_data():
-    btc_df = pd.read_csv("https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/bitcoin.csv")
-    eth_df = pd.read_csv("https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/ethereum.csv")
-    btc_daily_df = pd.read_csv("https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/bitcoin-daily.csv")
-    eth_daily_df = pd.read_csv("https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/ethereum-daily.csv")
+    btc_url = pd.read_csv("https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/bitcoin.csv")
+    eth_url = pd.read_csv("https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/ethereum.csv")
+    btc_daily_url = pd.read_csv("https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/bitcoin-daily.csv")
+    eth_daily_url = pd.read_csv("https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/ethereum-daily.csv")
+
+    # Read from GitHub
+    btc_df = pd.read_csv(btc_url)
+    eth_df = pd.read_csv(eth_url)
+    btc_daily_df = pd.read_csv(btc_daily_url)
+    eth_daily_df = pd.read_csv(eth_daily_url)
 
     btc_df['month'] = pd.to_datetime(btc_df['month'])
     eth_df['month'] = pd.to_datetime(eth_df['month'])
@@ -34,7 +40,7 @@ def load_data():
 
     return btc_df, eth_df, btc_daily_df, eth_daily_df
 
-btc_df, eth_df, btc_daily_df, eth_daily_df = load_data()
+# btc_df, eth_df, btc_daily_df, eth_daily_df = load_data()
 
 cutoff = pd.Timestamp.today() - pd.DateOffset(years=years)
 btc_df = btc_df[btc_df['month'] >= cutoff]
