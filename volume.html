@@ -4,88 +4,88 @@
   <title>Transaction Volume & Fees</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 40px;
-    background-color: #f9f9f9;
-    color: #333;
-    line-height: 1.7;
-  }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 40px;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.7;
+    }
 
-  header, main {
-    max-width: 1000px;
-    margin: auto;
-  }
+    header, main {
+      max-width: 1000px;
+      margin: auto;
+    }
 
-  h1 {
-    text-align: center;
-    color: #1a73e8;
-  }
+    h1 {
+      text-align: center;
+      color: #1a73e8;
+    }
 
-  p {
-    margin-bottom: 20px;
-  }
+    p {
+      margin-bottom: 20px;
+    }
 
-  .button-container {
-    text-align: center;
-    margin: 20px 0 40px;
-  }
+    .button-container {
+      text-align: center;
+      margin: 20px 0 40px;
+    }
 
-  .button-container a button {
-    padding: 12px 24px;
-    font-size: 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    margin: 10px;
-  }
+    .button-container a button {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 10px;
+    }
 
-  .primary {
-    background-color: #1a73e8;
-    color: white;
-  }
+    .primary {
+      background-color: #1a73e8;
+      color: white;
+    }
 
-  .secondary {
-    background-color: #ccc;
-    color: #333;
-  }
+    .secondary {
+      background-color: #ccc;
+      color: #333;
+    }
 
-  .image-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 40px 20px;
-  }
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px 20px;
+      justify-content: space-between;
+    }
 
-  .image-box {
-    width: calc(50% - 20px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .image-box img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  }
-
-  .caption {
-    margin-top: 10px;
-    width: 100%;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 500;
-    color: #666;
-  }
-
-  @media screen and (max-width: 768px) {
     .image-box {
+      width: calc(50% - 10px); /* 2 per row on desktop */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .image-box img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .caption {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      color: #666;
       width: 100%;
     }
-  }
-</style>
+
+    @media screen and (max-width: 768px) {
+      .image-box {
+        width: 100%; /* stack vertically on mobile */
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -112,7 +112,7 @@
       </div>
     </div>
 
-    <p>High transaction volumes lead to substantial transaction fees. In cryptocurrency systems, users pay network fees...</p>
+    <p>High transaction volumes lead to substantial transaction fees...</p>
 
     <div class="image-grid">
       <div class="image-box">
