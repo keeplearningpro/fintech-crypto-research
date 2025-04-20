@@ -72,9 +72,4 @@ body {
       .grid {
         grid-template-columns: repeat(2, 1fr);
       }
-    @media (max-width: 480px) {
-      .tile {
-        font-size: 0.9rem;
-        padding: 15px;
-      }
     }
