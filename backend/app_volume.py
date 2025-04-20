@@ -1,26 +1,45 @@
 import streamlit as st
 import pandas as pd
 
-# Load datasets
-bc_file_path = "https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/bitcoin.csv"
-etc_file_path = "https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/etherium.csv"
-bc_daily_file_path = "https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/bitcoin-daily.csv"
-etc_daily_file_path = "https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/etherium-daily.csv"
+st.set_page_config(page_title="Crypto Volume & Fees", layout="wide")
+st.title("📈 Transaction Volume & Fees Over Time")
 
-btc_df = pd.read_csv(bc_file_path)
-eth_df = pd.read_csv(etc_file_path)
-btc_daily_df = pd.read_csv(bc_daily_file_path)
-eth_daily_df = pd.read_csv(etc_daily_file_path)
+# User input: Horizontal scroll bar (slider)
+years = st.slider("Select how many years of data to visualize", min_value=1, max_value=10, value=5)
 
-# Convert date columns
-btc_df['month'] = pd.to_datetime(btc_df['month'])
-eth_df['month'] = pd.to_datetime(eth_df['month'])
-btc_daily_df['transaction_date'] = pd.to_datetime(btc_daily_df['transaction_date'])
-eth_daily_df['transaction_date'] = pd.to_datetime(eth_daily_df['transaction_date'])
 
-# Calculate average fees
-btc_df['avg_fee_btc'] = btc_df['total_fee_btc'] / btc_df['transaction_count']
-eth_df['avg_fee_eth'] = eth_df['total_fee_eth'] / eth_df['transaction_count']
+@st.cache_data
+def load_data():
+    # Load datasets
+    bc_file_path = "https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/bitcoin.csv"
+    etc_file_path = "https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/etherium.csv"
+    bc_daily_file_path = "https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/bitcoin-daily.csv"
+    etc_daily_file_path = "https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/etherium-daily.csv"
+    
+    btc_df = pd.read_csv(bc_file_path)
+    eth_df = pd.read_csv(etc_file_path)
+    btc_daily_df = pd.read_csv(bc_daily_file_path)
+    eth_daily_df = pd.read_csv(etc_daily_file_path)
+    
+    # Convert date columns
+    btc_df['month'] = pd.to_datetime(btc_df['month'])
+    eth_df['month'] = pd.to_datetime(eth_df['month'])
+    btc_daily_df['transaction_date'] = pd.to_datetime(btc_daily_df['transaction_date'])
+    eth_daily_df['transaction_date'] = pd.to_datetime(eth_daily_df['transaction_date'])
+    
+    # Calculate average fees
+    btc_df['avg_fee_btc'] = btc_df['total_fee_btc'] / btc_df['transaction_count']
+    eth_df['avg_fee_eth'] = eth_df['total_fee_eth'] / eth_df['transaction_count']
+    return btc_df, eth_df, btc_daily_df, eth_daily_df
+
+btc_df, eth_df, btc_daily_df, eth_daily_df = load_data()
+
+# Filter based on selected years
+cutoff = pd.Timestamp.today() - pd.DateOffset(years=years)
+btc_df = btc_df[btc_df['month'] >= cutoff]
+eth_df = eth_df[eth_df['month'] >= cutoff]
+btc_daily_df = btc_daily_df[btc_daily_df['transaction_date'] >= cutoff]
+eth_daily_df = eth_daily_df[eth_daily_df['transaction_date'] >= cutoff]
 
 # Title
 st.set_page_config(page_title="Crypto Analytics Dashboard", layout="wide")
