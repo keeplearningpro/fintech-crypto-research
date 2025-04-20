@@ -3,7 +3,7 @@ import pandas as pd
 
 # Set Streamlit page config (only once at the top)
 st.set_page_config(page_title="Crypto Analytics Dashboard", layout="wide")
-st.title("📊 Crypto Transaction Analysis Dashboard")
+st.title("📊 Bitcoin & Ethereum Transaction Analysis Dashboard")
 
 # User input: Horizontal scroll bar (slider)
 years = st.slider("Select how many years of data to visualize", min_value=1, max_value=10, value=5)
