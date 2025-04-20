@@ -35,12 +35,14 @@
       text-align: justify;
     }
 
-    .button-container {
-      text-align: center;
-      margin: 40px auto;
+    .button-container a,
+    .button-container button {
+      display: inline-block;
+      text-decoration: none;
     }
 
-    .button-container a button {
+    .button-container a button,
+    .button-container button {
       font-family: 'Segoe UI Semibold', sans-serif;
       padding: 12px 24px;
       font-size: 16px;
@@ -48,13 +50,19 @@
       border-radius: 6px;
       cursor: pointer;
       margin: 10px;
+      background-color: #e0e0e0;
+      color: #333;
       transition: background-color 0.3s ease, box-shadow 0.2s ease;
+      appearance: none; /* Ensures no native OS styles */
+      box-sizing: border-box;
     }
     
-    .button-container a,
-    .button-container button {
-      display: inline-block;
-    }
+
+      .button-container a button:hover,
+      .button-container button:hover {
+        background-color: #d2d2d2;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
     .primary {
       background-color: #1a73e8;
       color: white;
