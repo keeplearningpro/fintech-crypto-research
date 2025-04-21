@@ -55,6 +55,9 @@ ORDER BY month
 def load_data():
     btc_df = client.query(btc_query).to_dataframe()
     eth_df = client.query(eth_query).to_dataframe()
+
+    eth_df["total_fee_eth"] = eth_df["total_fee_eth"].astype(float)
+    btc_df["total_fee_btc"] = btc_df["total_fee_btc"].astype(float)
     return btc_df, eth_df
 
 btc_df, eth_df = load_data()
