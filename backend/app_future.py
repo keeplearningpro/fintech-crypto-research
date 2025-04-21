@@ -83,7 +83,7 @@ def plot_bubble_line(df, x_col, y_col, color):
     return base.mark_line(color=color) + base.mark_circle(color=color, size=60)
 
 # ---- DISPLAY ----
-st.subheader(f"📊 Bitcoin Forecast - Transactions ({model_choice})")
+st.subheader(f"📊 Bitcoin Forecast - Transactions (Next {future_years} Years Using {model_choice})")
 st.altair_chart(plot_bubble_line(btc_future, 'month', 'Predicted Transactions', 'orange').properties(height=300), use_container_width=True)
 
 st.subheader(f"📊 Bitcoin Forecast - Fees ({model_choice})")
