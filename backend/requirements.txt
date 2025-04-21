@@ -6,3 +6,4 @@ numpy
 google-cloud-bigquery
 google-auth
 db-dtypes
+statsmodels
