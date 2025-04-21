@@ -25,7 +25,7 @@ with col2:
     model_choice = st.radio(
         "Select prediction model",
         ["Linear Regression", "Holt-Winters Smoothing"],
-        horizontal=False
+        horizontal=True
     )
 
 
