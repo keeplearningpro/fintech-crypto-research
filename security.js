@@ -32,7 +32,7 @@ window.addEventListener('DOMContentLoaded', function () {
       ],
       datasets: [{
         label: 'Familiarity with Cryptocurrency',
-        data: ["15%", "15%", "20%", "15%", "12%", "23%"],
+        data: [15, 15, 20, 15, 12, 23],
         backgroundColor: [
           "#6baed6",
           "#de2d26",
@@ -48,7 +48,7 @@ window.addEventListener('DOMContentLoaded', function () {
       responsive: true,
       plugins: {
         legend: {
-          position: 'right'
+          position: 'right',
           labels: {
           boxWidth: 30,
           padding: 10,
