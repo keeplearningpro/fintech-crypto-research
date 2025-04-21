@@ -131,7 +131,7 @@ btc_tx_chart = alt.Chart(btc_future.reset_index()).mark_line(
     width='container',
     height=300
 )
-st.altair_chart(btc_tx_chart, use_container_width=True)
+st.altair_chart(btc_tx_bar, use_container_width=True)
 
 # --- Bitcoin Forecast Fees ---
 st.subheader(f"📊 Bitcoin Forecast - Fees (Next {future_years} Years)")
@@ -145,7 +145,7 @@ btc_fee_chart = alt.Chart(btc_future.reset_index()).mark_line(
     width='container',
     height=300
 )
-st.altair_chart(btc_fee_chart, use_container_width=True)
+st.altair_chart(btc_tx_bar, use_container_width=True)
 
 # --- Ethereum Forecast Transactions ---
 st.subheader(f"📊 Ethereum Forecast - Transactions (Next {future_years} Years)")
@@ -159,7 +159,7 @@ eth_tx_chart = alt.Chart(eth_future.reset_index()).mark_line(
     width='container',
     height=300
 )
-st.altair_chart(eth_tx_chart, use_container_width=True)
+st.altair_chart(eth_tx_bar, use_container_width=True)
 
 # --- Ethereum Forecast Fees ---
 st.subheader(f"📊 Ethereum Forecast - Fees (Next {future_years} Years)")
@@ -173,4 +173,4 @@ eth_fee_chart = alt.Chart(eth_future.reset_index()).mark_line(
     width='container',
     height=300
 )
-st.altair_chart(eth_fee_chart, use_container_width=True)
+st.altair_chart(eth_tx_bar, use_container_width=True)
