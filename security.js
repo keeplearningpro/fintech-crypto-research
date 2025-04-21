@@ -54,7 +54,8 @@ window.addEventListener('DOMContentLoaded', function () {
           padding: 10,
           font: {
             size: 10
-          }
+          },
+          textAlign: 'left'
         }
       },
         title: {
