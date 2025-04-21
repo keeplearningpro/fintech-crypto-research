@@ -4,7 +4,8 @@ import numpy as np
 from google.cloud import bigquery
 from google.oauth2 import service_account
 import datetime
-import matplotlib.pyplot as plt
+import altair as alt
+
 
 st.set_page_config(page_title="Crypto Future Predictions", layout="wide")
 st.title("🔮 Predicting the Future of Crypto Transactions")
@@ -116,32 +117,60 @@ eth_past, eth_future = prepare_and_predict(eth_df, "total_fee_eth", future_years
 
 
 # ---- DISPLAY ----
-st.subheader("📈 Bitcoin: Historical Transactions")
-st.line_chart(btc_past[['transaction_count']])
+# ---- Forecasts using Altair ----
 
-st.subheader("💰 Bitcoin: Historical Fees (BTC)")
-st.line_chart(btc_past[['total_fee_btc']])
+# --- Bitcoin Forecast Transactions ---
+st.subheader(f"📊 Bitcoin Forecast - Transactions (Next {future_years} Years)")
+btc_tx_chart = alt.Chart(btc_future.reset_index()).mark_line(
+    color='orange'
+).encode(
+    x='month:T',
+    y='Predicted Transactions:Q',
+    tooltip=['month:T', 'Predicted Transactions']
+).properties(
+    width='container',
+    height=300
+)
+st.altair_chart(btc_tx_chart, use_container_width=True)
 
-st.subheader(f"📊 Bitcoin Forecast (Next {future_years} Years)")
-fig1, ax1 = plt.subplots()
-ax1.plot(btc_future.index, btc_future["Predicted Transactions"], color="orange", label="Predicted Transactions")
-ax1.plot(btc_future.index, btc_future["Predicted Fees"], color="darkorange", linestyle='--', label="Predicted Fees")
-ax1.set_title("Bitcoin Forecast")
-ax1.set_ylabel("Volume / Fees")
-ax1.legend()
-st.pyplot(fig1)
+# --- Bitcoin Forecast Fees ---
+st.subheader(f"📊 Bitcoin Forecast - Fees (Next {future_years} Years)")
+btc_fee_chart = alt.Chart(btc_future.reset_index()).mark_line(
+    color='darkorange'
+).encode(
+    x='month:T',
+    y='Predicted Fees:Q',
+    tooltip=['month:T', 'Predicted Fees']
+).properties(
+    width='container',
+    height=300
+)
+st.altair_chart(btc_fee_chart, use_container_width=True)
 
-st.subheader("📈 Ethereum: Historical Transactions")
-st.line_chart(eth_past[['transaction_count']])
+# --- Ethereum Forecast Transactions ---
+st.subheader(f"📊 Ethereum Forecast - Transactions (Next {future_years} Years)")
+eth_tx_chart = alt.Chart(eth_future.reset_index()).mark_line(
+    color='green'
+).encode(
+    x='month:T',
+    y='Predicted Transactions:Q',
+    tooltip=['month:T', 'Predicted Transactions']
+).properties(
+    width='container',
+    height=300
+)
+st.altair_chart(eth_tx_chart, use_container_width=True)
 
-st.subheader("💰 Ethereum: Historical Fees (ETH)")
-st.line_chart(eth_past[['total_fee_eth']])
-
-st.subheader(f"📊 Ethereum Forecast (Next {future_years} Years)")
-fig2, ax2 = plt.subplots()
-ax2.plot(eth_future.index, eth_future["Predicted Transactions"], color="green", label="Predicted Transactions")
-ax2.plot(eth_future.index, eth_future["Predicted Fees"], color="darkgreen", linestyle='--', label="Predicted Fees")
-ax2.set_title("Ethereum Forecast")
-ax2.set_ylabel("Volume / Fees")
-ax2.legend()
-st.pyplot(fig2)
+# --- Ethereum Forecast Fees ---
+st.subheader(f"📊 Ethereum Forecast - Fees (Next {future_years} Years)")
+eth_fee_chart = alt.Chart(eth_future.reset_index()).mark_line(
+    color='darkgreen'
+).encode(
+    x='month:T',
+    y='Predicted Fees:Q',
+    tooltip=['month:T', 'Predicted Fees']
+).properties(
+    width='container',
+    height=300
+)
+st.altair_chart(eth_fee_chart, use_container_width=True)
