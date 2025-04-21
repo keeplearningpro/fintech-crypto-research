@@ -44,7 +44,7 @@ ORDER BY month
 eth_query = f"""
 SELECT TIMESTAMP_TRUNC(block_timestamp, MONTH) AS month,
        COUNT(*) AS transaction_count,
-       SUM(gas_price * receipt_gas_used) / POW(10, 18) AS total_fee_eth
+       SUM(CAST(gas_price AS NUMERIC) * receipt_gas_used) / POW(10, 18) AS total_fee_eth
 FROM `bigquery-public-data.crypto_ethereum.transactions`
 WHERE block_timestamp >= TIMESTAMP('{start_date.date()}')
 GROUP BY month
