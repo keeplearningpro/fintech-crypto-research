@@ -36,7 +36,7 @@ SELECT TIMESTAMP_TRUNC(block_timestamp, MONTH) AS month,
        COUNT(*) AS transaction_count,
        SUM(fee) AS total_fee_btc
 FROM `bigquery-public-data.crypto_bitcoin.transactions`
-WHERE block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 1 YEAR)
+WHERE DATE(block_timestamp) >= DATE_SUB(CURRENT_DATE(), INTERVAL 1 YEAR)
 GROUP BY month
 ORDER BY month
 """
@@ -46,7 +46,7 @@ SELECT TIMESTAMP_TRUNC(block_timestamp, MONTH) AS month,
        COUNT(*) AS transaction_count,
        SUM(CAST(gas_price AS NUMERIC) * receipt_gas_used) / POW(10, 18) AS total_fee_eth
 FROM `bigquery-public-data.crypto_ethereum.transactions`
-WHERE block_timestamp >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 1 YEAR)
+WHERE DATE(block_timestamp) >= DATE_SUB(CURRENT_DATE(), INTERVAL 1 YEAR)
 GROUP BY month
 ORDER BY month
 """
