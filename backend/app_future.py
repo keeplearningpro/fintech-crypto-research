@@ -6,10 +6,10 @@ import altair as alt
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 
 st.set_page_config(page_title="Crypto Future Predictions", layout="wide")
-st.title("🔮 Predicting the Future of Crypto Transactions")
+st.title("🔮 Predicting the Future of Bitcoin and Ethereum Transactions")
 
 st.markdown("""
-This app uses historical data from GitHub to forecast transaction trends and fees for Bitcoin and Ethereum.
+This app uses historical data from BigQuery public datasets to forecast transaction trends and fees for Bitcoin and Ethereum.
 """)
 
 # ---- USER DROPDOWNS ----
@@ -83,14 +83,14 @@ def plot_bubble_line(df, x_col, y_col, color):
     return base.mark_line(color=color) + base.mark_circle(color=color, size=60)
 
 # ---- DISPLAY ----
-st.subheader(f"📊 Bitcoin Forecast - Transactions (Next {future_years} Years Using {model_choice})")
+st.subheader(f"📊 Bitcoin Transactions Forecast For Next {future_years} Years Using {model_choice}")
 st.altair_chart(plot_bubble_line(btc_future, 'month', 'Predicted Transactions', 'orange').properties(height=300), use_container_width=True)
 
-st.subheader(f"📊 Bitcoin Forecast - Fees ({model_choice})")
+st.subheader(f"📊 Bitcoin Fees Forecast For Next {future_years} Years Using {model_choice}")
 st.altair_chart(plot_bubble_line(btc_future, 'month', 'Predicted Fees', 'darkorange').properties(height=300), use_container_width=True)
 
-st.subheader(f"📊 Ethereum Forecast - Transactions ({model_choice})")
+st.subheader(f"📊 Ethereum Transactions Forecast For Next {future_years} Years Using {model_choice}")
 st.altair_chart(plot_bubble_line(eth_future, 'month', 'Predicted Transactions', 'green').properties(height=300), use_container_width=True)
 
-st.subheader(f"📊 Ethereum Forecast - Fees ({model_choice})")
+st.subheader(f"📊 Ethereum Fees Forecast For Next {future_years} Years Using {model_choice}")
 st.altair_chart(plot_bubble_line(eth_future, 'month', 'Predicted Fees', 'darkgreen').properties(height=300), use_container_width=True)
