@@ -13,9 +13,21 @@ This app uses historical data from BigQuery public datasets to forecast transact
 """)
 
 # ---- USER DROPDOWNS ----
-past_years = st.selectbox("Select how many years of historical data to use", [2, 5, 10], index=2)
-future_years = st.selectbox("Select how many years to forecast into the future", [1, 2, 3, 4, 5], index=2)
-model_choice = st.radio("Select prediction model", ["Linear Regression", "Holt-Winters Smoothing"])
+#past_years = st.selectbox("Select how many years of historical data to use", [2, 5, 10], index=2)
+#future_years = st.selectbox("Select how many years to forecast into the future", [1, 2, 3, 4, 5], index=2)
+#model_choice = st.radio("Select prediction model", ["Linear Regression", "Holt-Winters Smoothing"])
+
+past_years = st.slider("Select how many years of historical data to use",min_value=1,max_value=15,value=10)
+future_years = st.slider("Select how many years to forecast into the future",min_value=1,max_value=5,value=3)
+# Center aligned radio buttons using columns
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    model_choice = st.radio(
+        "Select prediction model",
+        ["Linear Regression", "Holt-Winters Smoothing"],
+        horizontal=False
+    )
+
 
 if future_years >= past_years:
     st.error("Future prediction years must be less than historical data years.")
