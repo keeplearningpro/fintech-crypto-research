@@ -48,12 +48,12 @@ window.addEventListener('DOMContentLoaded', function () {
       responsive: true,
       plugins: {
         legend: {
-          position: 'right',
+          position: 'bottom',
           labels: {
           boxWidth: 30,
           padding: 10,
           font: {
-            size: 14
+            size: 10
           }
         }
       },
