@@ -55,7 +55,8 @@ window.addEventListener('DOMContentLoaded', function () {
           font: {
             size: 14
           }
-        },
+        }
+      },
         title: {
           display: true,
           text: 'Familiarity with Cryptocurrency'
