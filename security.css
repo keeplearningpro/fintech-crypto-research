@@ -72,8 +72,13 @@ body {
       border-radius: 8px;
     }
 
-      #chartContainer {
-        max-width: 1000px;
-        margin: 50px auto;
-      }
+    #chartContainer {
+      max-width: 1000px;
+      margin: 50px auto;
+     }
+
+    canvas {
+      width: 100% !important;
+      height: 500px !important;
+    }
 
