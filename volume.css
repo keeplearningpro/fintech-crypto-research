@@ -92,3 +92,7 @@
     .hidden {
       display: none;
     }
+
+    .site-footer p {
+      text-align: center !important;
+    }
