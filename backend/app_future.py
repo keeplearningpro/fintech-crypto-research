@@ -4,6 +4,7 @@ import numpy as np
 from google.cloud import bigquery
 from google.oauth2 import service_account
 import datetime
+import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="Crypto Future Predictions", layout="wide")
 st.title("🔮 Predicting the Future of Crypto Transactions")
