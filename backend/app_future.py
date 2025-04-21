@@ -101,14 +101,46 @@ btc_past, btc_future = prepare_and_predict(btc_df, "total_fee_btc", future_years
 eth_past, eth_future = prepare_and_predict(eth_df, "total_fee_eth", future_years)
 
 # ---- DISPLAY ----
-st.subheader("📈 Historical Data: Bitcoin")
-st.line_chart(btc_past[['transaction_count', 'total_fee_btc']])
+#st.subheader("📈 Historical Data: Bitcoin")
+#st.line_chart(btc_past[['transaction_count', 'total_fee_btc']])
 
-st.subheader("📊 Forecast: Bitcoin (Next {} Years)".format(future_years))
-st.line_chart(btc_future)
+#st.subheader("📊 Forecast: Bitcoin (Next {} Years)".format(future_years))
+#st.line_chart(btc_future)
 
-st.subheader("📈 Historical Data: Ethereum")
-st.line_chart(eth_past[['transaction_count', 'total_fee_eth']])
+#st.subheader("📈 Historical Data: Ethereum")
+#st.line_chart(eth_past[['transaction_count', 'total_fee_eth']])
 
-st.subheader("📊 Forecast: Ethereum (Next {} Years)".format(future_years))
-st.line_chart(eth_future)
+#st.subheader("📊 Forecast: Ethereum (Next {} Years)".format(future_years))
+#st.line_chart(eth_future)
+
+
+# ---- DISPLAY ----
+st.subheader("📈 Bitcoin: Historical Transactions")
+st.line_chart(btc_past[['transaction_count']])
+
+st.subheader("💰 Bitcoin: Historical Fees (BTC)")
+st.line_chart(btc_past[['total_fee_btc']])
+
+st.subheader(f"📊 Bitcoin Forecast (Next {future_years} Years)")
+fig1, ax1 = plt.subplots()
+ax1.plot(btc_future.index, btc_future["Predicted Transactions"], color="orange", label="Predicted Transactions")
+ax1.plot(btc_future.index, btc_future["Predicted Fees"], color="darkorange", linestyle='--', label="Predicted Fees")
+ax1.set_title("Bitcoin Forecast")
+ax1.set_ylabel("Volume / Fees")
+ax1.legend()
+st.pyplot(fig1)
+
+st.subheader("📈 Ethereum: Historical Transactions")
+st.line_chart(eth_past[['transaction_count']])
+
+st.subheader("💰 Ethereum: Historical Fees (ETH)")
+st.line_chart(eth_past[['total_fee_eth']])
+
+st.subheader(f"📊 Ethereum Forecast (Next {future_years} Years)")
+fig2, ax2 = plt.subplots()
+ax2.plot(eth_future.index, eth_future["Predicted Transactions"], color="green", label="Predicted Transactions")
+ax2.plot(eth_future.index, eth_future["Predicted Fees"], color="darkgreen", linestyle='--', label="Predicted Fees")
+ax2.set_title("Ethereum Forecast")
+ax2.set_ylabel("Volume / Fees")
+ax2.legend()
+st.pyplot(fig2)
