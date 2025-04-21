@@ -58,3 +58,13 @@ body {
     .site-footer p {
       text-align: center !important;
     }
+    #iframeContainer {
+      display: none;
+      margin-top: 20px;
+    }
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
