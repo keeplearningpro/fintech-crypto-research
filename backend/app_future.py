@@ -69,7 +69,7 @@ btc_df, eth_df = load_data()
 
 # ---- Filter by historical period ----
 today = pd.Timestamp.today()
-cutoff = today - pd.DateOffset(years=past_years)
+cutoff = pd.Timestamp.now(tz="UTC") - pd.DateOffset(years=past_years)
 
 btc_df = btc_df[btc_df["month"] >= cutoff]
 eth_df = eth_df[eth_df["month"] >= cutoff]
