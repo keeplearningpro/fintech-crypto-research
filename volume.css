@@ -92,13 +92,3 @@
     .hidden {
       display: none;
     }
-    .site-footer {
-      /*background-color: #333;
-      color: #fffdd0;
-      padding: 8px 0;
-      font-family: 'Segoe UI', sans-serif;
-      font-size: 10px;
-      position: relative;
-      z-index: 10; */
-      text-align: center;
-    }
