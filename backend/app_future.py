@@ -22,9 +22,9 @@ future_years = st.slider("Select how many years to forecast into the future",min
 model_choice = st.radio("Select prediction model", ["Linear Regression", "Holt-Winters Smoothing"])
 
 
-if future_years >= past_years:
-    st.error("Future prediction years must be less than historical data years.")
-    st.stop()
+#if future_years >= past_years:
+#    st.error("Future prediction years must be less than historical data years.")
+#    st.stop()
 
 # ---- LOAD DATA ----
 @st.cache_data(ttl=86400)
@@ -75,27 +75,33 @@ def prepare_and_predict(df, fee_col, future_years, model_type):
 
     return df.set_index("month"), future_df
 
-btc_past, btc_future = prepare_and_predict(btc_df, "total_fee_btc", future_years, model_choice)
-eth_past, eth_future = prepare_and_predict(eth_df, "total_fee_eth", future_years, model_choice)
+#Adding the validation to check that the future years should not be less than past years
 
-# ---- CHARTS ----
-def plot_bubble_line(df, x_col, y_col, color):
-    base = alt.Chart(df.reset_index()).encode(
-        x=f'{x_col}:T',
-        y=f'{y_col}:Q',
-        tooltip=[f'{x_col}:T', f'{y_col}:Q']
-    )
-    return base.mark_line(color=color) + base.mark_circle(color=color, size=60)
+if future_years >= past_years:
+    st.error("❗ Future prediction years must be less than historical data years.")
 
-# ---- DISPLAY ----
-st.subheader(f"📊 Bitcoin Transactions Forecast For Next {future_years} Years Using {model_choice}")
-st.altair_chart(plot_bubble_line(btc_future, 'month', 'Predicted Transactions', 'orange').properties(height=300), use_container_width=True)
-
-st.subheader(f"📊 Bitcoin Fees Forecast For Next {future_years} Years Using {model_choice}")
-st.altair_chart(plot_bubble_line(btc_future, 'month', 'Predicted Fees', 'darkorange').properties(height=300), use_container_width=True)
-
-st.subheader(f"📊 Ethereum Transactions Forecast For Next {future_years} Years Using {model_choice}")
-st.altair_chart(plot_bubble_line(eth_future, 'month', 'Predicted Transactions', 'green').properties(height=300), use_container_width=True)
-
-st.subheader(f"📊 Ethereum Fees Forecast For Next {future_years} Years Using {model_choice}")
-st.altair_chart(plot_bubble_line(eth_future, 'month', 'Predicted Fees', 'darkgreen').properties(height=300), use_container_width=True)
+else:
+    btc_past, btc_future = prepare_and_predict(btc_df, "total_fee_btc", future_years, model_choice)
+    eth_past, eth_future = prepare_and_predict(eth_df, "total_fee_eth", future_years, model_choice)
+    
+    # ---- CHARTS ----
+    def plot_bubble_line(df, x_col, y_col, color):
+        base = alt.Chart(df.reset_index()).encode(
+            x=f'{x_col}:T',
+            y=f'{y_col}:Q',
+            tooltip=[f'{x_col}:T', f'{y_col}:Q']
+        )
+        return base.mark_line(color=color) + base.mark_circle(color=color, size=60)
+    
+    # ---- DISPLAY ----
+    st.subheader(f"📊 Bitcoin Transactions Forecast For Next {future_years} Years Using {model_choice}")
+    st.altair_chart(plot_bubble_line(btc_future, 'month', 'Predicted Transactions', 'orange').properties(height=300), use_container_width=True)
+    
+    st.subheader(f"📊 Bitcoin Fees Forecast For Next {future_years} Years Using {model_choice}")
+    st.altair_chart(plot_bubble_line(btc_future, 'month', 'Predicted Fees', 'darkorange').properties(height=300), use_container_width=True)
+    
+    st.subheader(f"📊 Ethereum Transactions Forecast For Next {future_years} Years Using {model_choice}")
+    st.altair_chart(plot_bubble_line(eth_future, 'month', 'Predicted Transactions', 'green').properties(height=300), use_container_width=True)
+    
+    st.subheader(f"📊 Ethereum Fees Forecast For Next {future_years} Years Using {model_choice}")
+    st.altair_chart(plot_bubble_line(eth_future, 'month', 'Predicted Fees', 'darkgreen').properties(height=300), use_container_width=True)
