@@ -1,17 +1,14 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from google.cloud import bigquery
-from google.oauth2 import service_account
 import datetime
 import altair as alt
-
 
 st.set_page_config(page_title="Crypto Future Predictions", layout="wide")
 st.title("🔮 Predicting the Future of Crypto Transactions")
 
 st.markdown("""
-This app uses historical data from BigQuery to forecast transaction trends and fees for Bitcoin and Ethereum.
+This app uses historical data from GitHub to forecast transaction trends and fees for Bitcoin and Ethereum.
 """)
 
 # ---- USER DROPDOWNS ----
@@ -22,39 +19,7 @@ if future_years >= past_years:
     st.error("Future prediction years must be less than historical data years.")
     st.stop()
 
-# ---- BIGQUERY AUTH ----
-#credentials = service_account.Credentials.from_service_account_info(
-#    st.secrets["gcp_service_account"],
-#    scopes=["https://www.googleapis.com/auth/cloud-platform"],
-#)
-#client = bigquery.Client(credentials=credentials, project=credentials.project_id)
-
-# ---- SQL QUERIES ----
-#today = datetime.datetime.today()
-#start_date = today - pd.DateOffset(years=past_years)
-
-#btc_query = f"""
-#SELECT TIMESTAMP_TRUNC(block_timestamp, MONTH) AS month,
-#       COUNT(*) AS transaction_count,
-#       SUM(fee) AS total_fee_btc
-#FROM `bigquery-public-data.crypto_bitcoin.transactions`
-#WHERE DATE(block_timestamp) >= DATE_SUB(CURRENT_DATE(), INTERVAL 1 YEAR)
-#GROUP BY month
-#ORDER BY month
-#"""
-
-#eth_query = f"""
-#SELECT TIMESTAMP_TRUNC(block_timestamp, MONTH) AS month,
-#       COUNT(*) AS transaction_count,
-#       SUM(CAST(gas_price AS NUMERIC) * receipt_gas_used) / POW(10, 18) AS total_fee_eth
-#FROM `bigquery-public-data.crypto_ethereum.transactions`
-#WHERE DATE(block_timestamp) >= DATE_SUB(CURRENT_DATE(), INTERVAL 1 YEAR)
-#GROUP BY month
-#ORDER BY month
-#""" 
-
-
-
+# ---- Load Data from GitHub ----
 @st.cache_data(ttl=86400)
 def load_data():
     btc_url = "https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/bitcoin-future.csv"
@@ -70,9 +35,7 @@ def load_data():
 btc_df, eth_df = load_data()
 
 # ---- Filter by historical period ----
-today = pd.Timestamp.today()
 cutoff = pd.Timestamp.now(tz="UTC") - pd.DateOffset(years=past_years)
-
 btc_df = btc_df[btc_df["month"] >= cutoff]
 eth_df = eth_df[eth_df["month"] >= cutoff]
 
@@ -102,75 +65,44 @@ def prepare_and_predict(df, fee_col, future_years):
 btc_past, btc_future = prepare_and_predict(btc_df, "total_fee_btc", future_years)
 eth_past, eth_future = prepare_and_predict(eth_df, "total_fee_eth", future_years)
 
-# ---- DISPLAY ----
-#st.subheader("📈 Historical Data: Bitcoin")
-#st.line_chart(btc_past[['transaction_count', 'total_fee_btc']])
+# ---- Altair Bubble Line Charts ----
 
-#st.subheader("📊 Forecast: Bitcoin (Next {} Years)".format(future_years))
-#st.line_chart(btc_future)
-
-#st.subheader("📈 Historical Data: Ethereum")
-#st.line_chart(eth_past[['transaction_count', 'total_fee_eth']])
-
-#st.subheader("📊 Forecast: Ethereum (Next {} Years)".format(future_years))
-#st.line_chart(eth_future)
-
-
-# ---- DISPLAY ----
-# ---- Forecasts using Altair ----
-
-# --- Bitcoin Forecast Transactions ---
+# --- Bitcoin Forecast: Transactions ---
 st.subheader(f"📊 Bitcoin Forecast - Transactions (Next {future_years} Years)")
-btc_tx_bar = alt.Chart(btc_future.reset_index()).mark_bar(
-    color='orange'
-).encode(
+btc_tx_base = alt.Chart(btc_future.reset_index()).encode(
     x='month:T',
     y='Predicted Transactions:Q',
     tooltip=['month:T', 'Predicted Transactions']
-).properties(
-    width='container',
-    height=300
 )
-st.altair_chart(btc_tx_bar, use_container_width=True)
+btc_tx_chart = btc_tx_base.mark_line(color='orange') + btc_tx_base.mark_circle(color='orange', size=60)
+st.altair_chart(btc_tx_chart.properties(width='container', height=300), use_container_width=True)
 
-# --- Bitcoin Forecast Fees ---
+# --- Bitcoin Forecast: Fees ---
 st.subheader(f"📊 Bitcoin Forecast - Fees (Next {future_years} Years)")
-btc_fee_bar = alt.Chart(btc_future.reset_index()).mark_bar(
-    color='darkorange'
-).encode(
+btc_fee_base = alt.Chart(btc_future.reset_index()).encode(
     x='month:T',
     y='Predicted Fees:Q',
     tooltip=['month:T', 'Predicted Fees']
-).properties(
-    width='container',
-    height=300
 )
-st.altair_chart(btc_tx_bar, use_container_width=True)
+btc_fee_chart = btc_fee_base.mark_line(color='darkorange') + btc_fee_base.mark_circle(color='darkorange', size=60)
+st.altair_chart(btc_fee_chart.properties(width='container', height=300), use_container_width=True)
 
-# --- Ethereum Forecast Transactions ---
+# --- Ethereum Forecast: Transactions ---
 st.subheader(f"📊 Ethereum Forecast - Transactions (Next {future_years} Years)")
-eth_tx_bar = alt.Chart(eth_future.reset_index()).mark_bar(
-    color='green'
-).encode(
+eth_tx_base = alt.Chart(eth_future.reset_index()).encode(
     x='month:T',
     y='Predicted Transactions:Q',
     tooltip=['month:T', 'Predicted Transactions']
-).properties(
-    width='container',
-    height=300
 )
-st.altair_chart(eth_tx_bar, use_container_width=True)
+eth_tx_chart = eth_tx_base.mark_line(color='green') + eth_tx_base.mark_circle(color='green', size=60)
+st.altair_chart(eth_tx_chart.properties(width='container', height=300), use_container_width=True)
 
-# --- Ethereum Forecast Fees ---
+# --- Ethereum Forecast: Fees ---
 st.subheader(f"📊 Ethereum Forecast - Fees (Next {future_years} Years)")
-eth_fee_bar = alt.Chart(eth_future.reset_index()).mark_bar(
-    color='darkgreen'
-).encode(
+eth_fee_base = alt.Chart(eth_future.reset_index()).encode(
     x='month:T',
     y='Predicted Fees:Q',
     tooltip=['month:T', 'Predicted Fees']
-).properties(
-    width='container',
-    height=300
 )
-st.altair_chart(eth_tx_bar, use_container_width=True)
+eth_fee_chart = eth_fee_base.mark_line(color='darkgreen') + eth_fee_base.mark_circle(color='darkgreen', size=60)
+st.altair_chart(eth_fee_chart.properties(width='container', height=300), use_container_width=True)
