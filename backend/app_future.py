@@ -21,46 +21,58 @@ if future_years >= past_years:
     st.stop()
 
 # ---- BIGQUERY AUTH ----
-credentials = service_account.Credentials.from_service_account_info(
-    st.secrets["gcp_service_account"],
-    scopes=["https://www.googleapis.com/auth/cloud-platform"],
-)
-client = bigquery.Client(credentials=credentials, project=credentials.project_id)
+#credentials = service_account.Credentials.from_service_account_info(
+#    st.secrets["gcp_service_account"],
+#    scopes=["https://www.googleapis.com/auth/cloud-platform"],
+#)
+#client = bigquery.Client(credentials=credentials, project=credentials.project_id)
 
 # ---- SQL QUERIES ----
-today = datetime.datetime.today()
-start_date = today - pd.DateOffset(years=past_years)
+#today = datetime.datetime.today()
+#start_date = today - pd.DateOffset(years=past_years)
 
-btc_query = f"""
-SELECT TIMESTAMP_TRUNC(block_timestamp, MONTH) AS month,
-       COUNT(*) AS transaction_count,
-       SUM(fee) AS total_fee_btc
-FROM `bigquery-public-data.crypto_bitcoin.transactions`
-WHERE DATE(block_timestamp) >= DATE_SUB(CURRENT_DATE(), INTERVAL 1 YEAR)
-GROUP BY month
-ORDER BY month
-"""
+#btc_query = f"""
+#SELECT TIMESTAMP_TRUNC(block_timestamp, MONTH) AS month,
+#       COUNT(*) AS transaction_count,
+#       SUM(fee) AS total_fee_btc
+#FROM `bigquery-public-data.crypto_bitcoin.transactions`
+#WHERE DATE(block_timestamp) >= DATE_SUB(CURRENT_DATE(), INTERVAL 1 YEAR)
+#GROUP BY month
+#ORDER BY month
+#"""
 
-eth_query = f"""
-SELECT TIMESTAMP_TRUNC(block_timestamp, MONTH) AS month,
-       COUNT(*) AS transaction_count,
-       SUM(CAST(gas_price AS NUMERIC) * receipt_gas_used) / POW(10, 18) AS total_fee_eth
-FROM `bigquery-public-data.crypto_ethereum.transactions`
-WHERE DATE(block_timestamp) >= DATE_SUB(CURRENT_DATE(), INTERVAL 1 YEAR)
-GROUP BY month
-ORDER BY month
-"""
+#eth_query = f"""
+#SELECT TIMESTAMP_TRUNC(block_timestamp, MONTH) AS month,
+#       COUNT(*) AS transaction_count,
+#       SUM(CAST(gas_price AS NUMERIC) * receipt_gas_used) / POW(10, 18) AS total_fee_eth
+#FROM `bigquery-public-data.crypto_ethereum.transactions`
+#WHERE DATE(block_timestamp) >= DATE_SUB(CURRENT_DATE(), INTERVAL 1 YEAR)
+#GROUP BY month
+#ORDER BY month
+#""" 
+
+
 
 @st.cache_data(ttl=86400)
 def load_data():
-    btc_df = client.query(btc_query).to_dataframe()
-    eth_df = client.query(eth_query).to_dataframe()
+    btc_url = "https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/bitcoin-future.csv"
+    eth_url = "https://raw.githubusercontent.com/keeplearningpro/fintech-crypto-research/main/data/ethereum-future.csv"
 
-    eth_df["total_fee_eth"] = eth_df["total_fee_eth"].astype(float)
+    btc_df = pd.read_csv(btc_url, parse_dates=["month"])
+    eth_df = pd.read_csv(eth_url, parse_dates=["month"])
+
     btc_df["total_fee_btc"] = btc_df["total_fee_btc"].astype(float)
+    eth_df["total_fee_eth"] = eth_df["total_fee_eth"].astype(float)
     return btc_df, eth_df
 
 btc_df, eth_df = load_data()
+
+# ---- Filter by historical period ----
+today = pd.Timestamp.today()
+cutoff = today - pd.DateOffset(years=past_years)
+
+btc_df = btc_df[btc_df["month"] >= cutoff]
+eth_df = eth_df[eth_df["month"] >= cutoff]
 
 # ---- RESAMPLE AND PREDICT ----
 def prepare_and_predict(df, fee_col, future_years):
