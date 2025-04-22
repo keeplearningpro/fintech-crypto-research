@@ -91,7 +91,7 @@ window.addEventListener('DOMContentLoaded', function () {
     options: {
       responsive: true,
       cutout: '0%',
-      radius: '80%', 
+      radius: '90%', 
       plugins: {
         datalabels: {
           formatter: (value) => `${value}%`,
