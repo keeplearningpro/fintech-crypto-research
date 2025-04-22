@@ -174,7 +174,7 @@ window.addEventListener('DOMContentLoaded', function () {
         backgroundColor: '#2CA8DA',
         borderRadius: 6,
         barPercentage: 0.9,
-        categoryPercentage: 1
+        categoryPercentage: 0.6
       }]
     },
     options: {
