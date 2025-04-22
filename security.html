@@ -17,6 +17,7 @@
   </header>
   <script src="security.js"></script>
   <main>
+    <!-- First visible block -->
     <p>
       One of the most significant barriers to mainstream cryptocurrency adoption is security. Unlike traditional financial institutions cryptocurrencies do not manage security centrally. These currencies expect individuals to secure their own wallets and private keys. This decentralization is indeed empowering for some users but at the same time has made users increasingly vulnerable to hacks, scams, and fraud.
     <p>
@@ -36,13 +37,28 @@
     <div id="iframeContainer">
       <iframe id="surveyFrame" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRM3f4lMoKGYIEUMyxLQzWqsi6nj9uwFcgD3nA0kKvVswGgMBUSszu3z8QVxX0gn80iNd5_C73xWg_D/pubhtml?widget=true&amp;headers=false" frameborder="0" allowfullscreen></iframe>
     </div>
+
+    <!-- Read More toggle button -->
+    <div class="button-container">
+      <button class="secondary" onclick="showBlock('block2', this)">Show More</button>
+    </div>
+
+    <!-- Block 2 -->
+    <div id="block2" class="hidden">
     <p>
       From the survey results we can see that only 23% of respondents currently invest in crypto. Another 15% showed interest in future investments, but 62% were skeptical or disinterested altogether.This has illustrated in the pie chart below. Please hover on the pie chart to see the data.
     </p>
 
     <div id="chartContainer">
       <canvas id="cryptoFamiliarityChart"></canvas>
-    </div>    
+    </div>
+    <div class="button-container">
+      <button class="secondary" onclick="showBlock('block3', this)">Show More</button>
+    </div>
+    </div>
+    
+    <!-- Block 3 -->
+    <div id="block3" class="hidden">
     <p>
       Trust in crypto platforms is low—just 8% fully trust them, while 55% express strong doubts. Interestingly, although 70% haven’t experienced or known someone affected by a breach, skepticism remains high—implying distrust is driven more by perception than direct experience. The pie charts given below represent this information derived from the survey responses.
     </p>
@@ -57,7 +73,13 @@
         <canvas id="securityBreachChart"></canvas>
       </div>
     </div>
-    
+      <div class="button-container">
+        <button class="secondary" onclick="showBlock('block4', this)">Show More</button>
+      </div>
+    </div>
+
+     <!-- Block 4 -->
+     <div id="block4" class="hidden"></div>
     <p>
       The most commonly cited security concerns were hacking risks, lack of regulation, and scams, with some also worried about the irreversible nature of transactions.These findings reflected in the bar graph below, helps us to visualize how public sentiment aligns with the broader challenges facing the industry.
     </p>
@@ -75,6 +97,7 @@
         <button class="secondary">⬅️ Back to Home</button>
       </a>
       <button class="secondary" onclick="scrollToTop()">🔝 Back to Top</button>
+    </div>
     </div>
   </main>
 
