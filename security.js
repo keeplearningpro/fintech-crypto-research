@@ -173,7 +173,8 @@ window.addEventListener('DOMContentLoaded', function () {
         data: [16, 16, 8, 13, 9, 5, 2, 11],
         backgroundColor: '#2CA8DA',
         borderRadius: 6,
-        barPercentage: 0.6
+        barPercentage: 0.9,
+        categoryPercentage: 1
       }]
     },
     options: {
