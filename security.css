@@ -113,3 +113,11 @@ body {
   font-weight: 600;
   color: #333;
 }
+
+#securityChartContainer {
+  max-width: 1000px;
+  margin: 20px auto;
+}
+#securityConcernChart {
+  height: 450px !important;
+}
