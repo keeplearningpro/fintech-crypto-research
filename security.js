@@ -51,7 +51,7 @@ window.addEventListener('DOMContentLoaded', function () {
           position: 'bottom',
           align: 'start',
           labels: {
-          textAlign: 'left'
+          textAlign: 'left',
           boxWidth: 30,
           padding: 10,
           font: {
