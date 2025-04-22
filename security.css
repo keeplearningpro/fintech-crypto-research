@@ -139,9 +139,17 @@ body {
 	  width: 100%;           
 	  aspect-ratio: 1 / 1;  
 	}
+
 	.left-aligned-section {
-	  text-align: left;
-	  max-width: 800px;  
-	  margin: 0 auto;    
+	  text-align: left !important;
+	  max-width: 800px;
+	  margin: 0 auto;
 	}
+	
+	.left-aligned-section p,
+	.left-aligned-section ul,
+	.left-aligned-section li {
+	  text-align: left !important;
+	}
+
 
