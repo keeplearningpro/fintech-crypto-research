@@ -103,14 +103,14 @@ body {
 
 .chart-column {
   flex: 1 1 400px;
-  max-width: 500px;
+  max-width: 1000px;
   text-align: center;
 }
 
 .chart-column h3 {
-  font-size: 12px;
+  font-size: 10px;
   margin-bottom: 5px; 
-  font-weight: 600;
+  font-weight: 500;
   color: #333;
 }
 
