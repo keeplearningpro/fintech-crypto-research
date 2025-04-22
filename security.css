@@ -141,15 +141,19 @@ body {
 	}
 
 	.left-aligned-section {
-	  text-align: left !important;
-	  max-width: 800px;
-	  margin: 0 auto;
+	  text-align: left;
+	  max-width: 900px;
+	  margin: 30px auto;
+	  padding: 0 20px;
+	  display: block;
 	}
 	
 	.left-aligned-section p,
 	.left-aligned-section ul,
 	.left-aligned-section li {
 	  text-align: left !important;
+	  margin-left: 0 !important;
+          margin-right: 0 !important;
 	}
 
 
