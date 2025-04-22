@@ -23,6 +23,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   new Chart(ctx, {
     type: 'pie',
+    radius: '90%',
     data: {
       labels: [
         "Cryptocurrency is the future of finance.",
