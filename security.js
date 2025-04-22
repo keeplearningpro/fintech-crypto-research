@@ -222,7 +222,8 @@ window.addEventListener('DOMContentLoaded', function () {
           formatter: value => value
         },
         title: {
-          display: false
+          display: true,
+          text: "Perception of Security Concerns"
         }
       }
     },
