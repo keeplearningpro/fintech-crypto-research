@@ -98,5 +98,5 @@ body {
 
 .chart-box {
   flex: 1 1 400px;
-  max-width: 500px;
+  max-width: 1000px;
 }
