@@ -1,7 +1,9 @@
+//Function to scross to the top
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-  
+
+//Function to show/hide for iframe
 function toggleIframe() {
     const iframeContainer = document.getElementById("iframeContainer");
     const button = document.getElementById("toggleButton");
@@ -65,5 +67,86 @@ window.addEventListener('DOMContentLoaded', function () {
         }
       }
     }
+  });
+});
+
+
+//Function to trust factor and security breach pie chart 
+Chart.register(ChartDataLabels);
+
+window.addEventListener('DOMContentLoaded', function () {
+  const trustFactorCtx = document.getElementById('trustFactorChart').getContext('2d');
+  const breachCtx = document.getElementById('securityBreachChart').getContext('2d');
+
+  // Chart 1: Trust Factor (Pie)
+  new Chart(trustFactorCtx, {
+    type: 'pie',
+    data: {
+      labels: ["1", "2", "3", "4", "5"],
+      datasets: [{
+        data: [30, 25, 27, 10, 8],
+        backgroundColor: ["#4F81BD", "#C0504D", "#9BBB59", "#8064A2", "#00B0F0"]
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        title: {
+          display: true,
+          text: "Trust Factor"
+        },
+        datalabels: {
+          formatter: (value) => `${value}%`,
+          color: "#fff",
+          font: {
+            weight: 'bold',
+            size: 14
+          }
+        },
+        legend: {
+          display: false
+        }
+      }
+    },
+    plugins: [ChartDataLabels]
+  });
+
+  // Chart 2: Knowledge About Security Breach (Donut)
+  new Chart(breachCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ["No", "Not Sure", "Yes"],
+      datasets: [{
+        data: [40, 30, 30],
+        backgroundColor: ["#4F81BD", "#C0504D", "#9BBB59"]
+      }]
+    },
+    options: {
+      responsive: true,
+      cutout: '50%',
+      plugins: {
+        title: {
+          display: true,
+          text: "Knowledge About Security Breach"
+        },
+        datalabels: {
+          formatter: (value) => `${value}%`,
+          color: "#fff",
+          font: {
+            weight: 'bold',
+            size: 14
+          }
+        },
+        legend: {
+          position: 'right',
+          labels: {
+            font: {
+              size: 13
+            }
+          }
+        }
+      }
+    },
+    plugins: [ChartDataLabels]
   });
 });
