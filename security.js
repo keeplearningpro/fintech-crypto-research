@@ -80,7 +80,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   // Chart 1: Trust Factor (Pie)
   new Chart(trustFactorCtx, {
-    type: 'pie',
+    type: 'doughnut',
     data: {
       labels: ["1", "2", "3", "4", "5"],
       datasets: [{
@@ -90,6 +90,8 @@ window.addEventListener('DOMContentLoaded', function () {
     },
     options: {
       responsive: true,
+      cutout: '0%',
+      radius: '80%', 
       plugins: {
         title: {
           display: true,
