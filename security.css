@@ -121,3 +121,7 @@ body {
 #securityConcernChart {
   height: 450px !important;
 }
+
+.hidden {
+    display: none;
+}
