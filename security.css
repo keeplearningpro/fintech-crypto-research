@@ -125,3 +125,17 @@ body {
 .hidden {
     display: none;
 }
+
+.centered-canvas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  margin: auto;
+}
+
+#cryptoFamiliarityChart {
+  max-width: 500px;     
+  width: 100%;           
+  aspect-ratio: 1 / 1;  
+}
