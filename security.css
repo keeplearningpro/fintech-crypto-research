@@ -92,11 +92,24 @@ body {
   justify-content: space-around;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 40px;
   margin-top: 10px;
 }
 
-.chart-box {
+/*.chart-box {
   flex: 1 1 400px;
   max-width: 1000px;
+}*/
+
+.chart-column {
+  flex: 1 1 400px;
+  max-width: 500px;
+  text-align: center;
+}
+
+.chart-column h3 {
+  font-size: 16px;
+  margin-bottom: 10px; 
+  font-weight: 600;
+  color: #333;
 }
