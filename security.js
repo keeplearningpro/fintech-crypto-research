@@ -49,13 +49,14 @@ window.addEventListener('DOMContentLoaded', function () {
       plugins: {
         legend: {
           position: 'bottom',
+          align: 'start',
           labels: {
+          textAlign: 'left'
           boxWidth: 30,
           padding: 10,
           font: {
             size: 10
-          },
-          textAlign: 'left'
+          }
         }
       },
         title: {
