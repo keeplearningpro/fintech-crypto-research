@@ -140,7 +140,7 @@ body {
 	  aspect-ratio: 1 / 1;  
 	}
 
-	.left-aligned-section {
+	/*.left-aligned-section {
 	  text-align: left;
 	  max-width: 900px;
 	  margin: 30px auto;
@@ -154,6 +154,6 @@ body {
 	  text-align: left !important;
 	  margin-left: 0 !important;
           margin-right: 0 !important;
-	}
+	}*/
 
 
