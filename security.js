@@ -11,7 +11,7 @@ function showBlock(id, btn) {
     }
 
 //Function to show/hide for iframe
-function toggleIframe() {
+/*function toggleIframe() {
     const iframeContainer = document.getElementById("iframeContainer");
     const button = document.getElementById("toggleButton");
 
@@ -22,7 +22,20 @@ function toggleIframe() {
       iframeContainer.style.display = "none";
       button.textContent = "View Survey Results";
     }
+  }*/
+function toggleIframe() {
+  const iframeContainer = document.getElementById("iframeContainer");
+  const button = document.getElementById("toggleButton");
+  const isHidden = window.getComputedStyle(iframeContainer).display === "none";
+
+  if (isHidden) {
+    iframeContainer.style.display = "block";
+    button.textContent = "Hide Survey Results";
+  } else {
+    iframeContainer.style.display = "none";
+    button.textContent = "View Survey Results";
   }
+}
 
 //Function for Pie Chatt for Familiarity With Cryptocurrency
 window.addEventListener('DOMContentLoaded', function () {
