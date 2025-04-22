@@ -93,10 +93,6 @@ window.addEventListener('DOMContentLoaded', function () {
       cutout: '0%',
       radius: '80%', 
       plugins: {
-        title: {
-          display: true,
-          text: "Trust Factor"
-        },
         datalabels: {
           formatter: (value) => `${value}%`,
           color: "#fff",
@@ -127,10 +123,6 @@ window.addEventListener('DOMContentLoaded', function () {
       responsive: true,
       cutout: '50%',
       plugins: {
-        title: {
-          display: true,
-          text: "Knowledge About Security Breach"
-        },
         datalabels: {
           formatter: (value) => `${value}%`,
           color: "#fff",
