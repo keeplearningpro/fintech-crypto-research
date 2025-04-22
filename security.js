@@ -71,7 +71,7 @@ window.addEventListener('DOMContentLoaded', function () {
 });
 
 
-//Function to trust factor and security breach pie chart 
+//Function for trust factor and security breach pie chart 
 Chart.register(ChartDataLabels);
 
 window.addEventListener('DOMContentLoaded', function () {
@@ -149,4 +149,82 @@ window.addEventListener('DOMContentLoaded', function () {
     },
     plugins: [ChartDataLabels]
   });
+});
+
+//Function for Perception of Security Concern
+Chart.register(ChartDataLabels);
+
+const ctx = document.getElementById('securityConcernChart').getContext('2d');
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: [
+      "Risk of exchange hacks",
+      "Phishing or social engineering",
+      "Lack of regulatory protection",
+      "Private key loss or theft",
+      "Smart contract vulnerabilities",
+      "I don't have any idea",
+      "None of the above",
+      "Don't know"
+    ],
+    datasets: [{
+      label: 'Responses',
+      data: [16, 16, 8, 13, 9, 5, 2, 11],
+      backgroundColor: '#2CA8DA',
+      borderRadius: 6,
+      barPercentage: 0.6
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        ticks: {
+          maxRotation: 60,
+          minRotation: 45,
+          font: {
+            size: 12
+          }
+        },
+        grid: {
+          display: false
+        }
+      },
+      y: {
+        beginAtZero: true,
+        ticks: {
+          stepSize: 2,
+          font: {
+            size: 14
+          }
+        },
+        title: {
+          display: true,
+          text: 'Responses'
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        display: false
+      },
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+        color: '#000',
+        font: {
+          weight: 'bold',
+          size: 14
+        },
+        formatter: value => value
+      },
+      title: {
+        display: false
+      }
+    }
+  },
+  plugins: [ChartDataLabels]
 });
