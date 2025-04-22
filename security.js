@@ -94,7 +94,13 @@ window.addEventListener('DOMContentLoaded', function () {
       radius: '90%', 
       plugins: {
         datalabels: {
-          formatter: (value) => `${value}%`,
+          //formatter: (value) => `${value}%`,
+          formatter: (value, context) => {
+          const data = context.chart.data.datasets[0].data;
+          const total = data.reduce((a, b) => a + b, 0);
+          const percentage = ((value / total) * 100).toFixed(1);
+          return `${context.chart.data.labels[context.dataIndex]} (${percentage}%)`;
+          },
           color: "#fff",
           font: {
             weight: 'bold',
