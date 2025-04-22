@@ -87,55 +87,55 @@ body {
       height: 500px !important;
     }
 
-.chart-row {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 40px;
-  margin-top: 10px;
-}
+	.chart-row {
+	  display: flex;
+	  justify-content: space-around;
+	  align-items: flex-start;
+	  flex-wrap: wrap;
+	  gap: 40px;
+	  margin-top: 10px;
+	}
 
-/*.chart-box {
-  flex: 1 1 400px;
-  max-width: 1000px;
-}*/
+	/*.chart-box {
+	  flex: 1 1 400px;
+	  max-width: 1000px;
+	}*/
 
-.chart-column {
-  flex: 1 1 400px;
-  max-width: 800px;
-  text-align: center;
-}
+	.chart-column {
+	  flex: 1 1 400px;
+	  max-width: 800px;
+	  text-align: center;
+	}
 
-.chart-column h3 {
-  font-size: 10px;
-  margin-bottom: 5px; 
-  font-weight: 500;
-  color: #333;
-}
+	.chart-column h3 {
+	  font-size: 10px;
+	  margin-bottom: 5px; 
+	  font-weight: 500;
+	  color: #333;
+	}
 
-#securityChartContainer {
-  max-width: 1000px;
-  margin: 20px auto;
-}
-#securityConcernChart {
-  height: 450px !important;
-}
+	#securityChartContainer {
+	  max-width: 1000px;
+	  margin: 20px auto;
+	}
+	#securityConcernChart {
+	  height: 450px !important;
+	}
 
-.hidden {
-    display: none;
-}
+	.hidden {
+		display: none;
+	}
 
-.centered-canvas {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 100%;
-  margin: auto;
-}
+	.centered-canvas {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  max-width: 100%;
+	  margin: auto;
+	}
 
-#cryptoFamiliarityChart {
-  max-width: 500px;     
-  width: 100%;           
-  aspect-ratio: 1 / 1;  
-}
+	#cryptoFamiliarityChart {
+	  max-width: 500px;     
+	  width: 100%;           
+	  aspect-ratio: 1 / 1;  
+	}
