@@ -62,3 +62,14 @@ body {
     .hidden {
       display: none;
     }
+
+    #moreContent {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    #moreContent.show {
+      display: block;
+      opacity: 1;
+    }
