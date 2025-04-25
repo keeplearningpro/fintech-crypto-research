@@ -58,3 +58,7 @@ body {
     .site-footer p {
       text-align: center !important;
     }
+
+    .hidden {
+      display: none;
+    }
