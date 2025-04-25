@@ -76,12 +76,12 @@ body {
     }
 
 /* Disabling text selection globally to prevent copying */
-      body, html, * {
-        -webkit-user-select: none; /* Chrome, Safari */
-        -moz-user-select: none;    /* Firefox */
-        -ms-user-select: none;     /* IE10+/Edge */
-        user-select: none;         /* Standard */
-      }
+      /*body, html, * {
+        -webkit-user-select: none; 
+        -moz-user-select: none;    
+        -ms-user-select: none;     
+        user-select: none;         
+      }*/
     @media (max-width: 768px) {
       header {
         font-size: 0.9rem;
